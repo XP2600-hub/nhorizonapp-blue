@@ -10,4 +10,8 @@ Then use the horizons.conf as your virtualhost
 This virtualhost using the following folder as Document root folder
 /phphorizon/
 So make sure you create it, move app files to it and assign apropriate permissions to it.
+Build a database on your Mysql
+Edit contact.php with your database information.
+
+
 
