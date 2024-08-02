@@ -13,5 +13,7 @@ So make sure you create it, move app files to it and assign apropriate permissio
 Build a database on your Mysql
 Edit contact.php with your database information.
 
+#Blue Version...
+
 
 
