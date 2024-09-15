@@ -24,7 +24,7 @@ pipeline {
 
     post {
         always {
-            // You can add any post-build actions here
+            echo "done!"
         }
     }
 }
