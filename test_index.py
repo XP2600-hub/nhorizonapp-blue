@@ -11,8 +11,8 @@ def run_test():
 
     # Desired capabilities
     capabilities = {
-        'browserstack.user': xp_wQRfve,
-        'browserstack.key': Jxn4E9RzqwXjNVLyxkok,
+        'browserstack.user': 'xp_wQRfve',
+        'browserstack.key': 'Jxn4E9RzqwXjNVLyxkok',
         'browser': 'Chrome',
         'os': 'Windows',
         'os_version': '10',
