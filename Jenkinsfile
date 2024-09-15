@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        BROWSERSTACK_USERNAME = xp_wQRfve
-        BROWSERSTACK_ACCESS_KEY = Jxn4E9RzqwXjNVLyxkok
+        BROWSERSTACK_USERNAME = 'xp_wQRfve'
+        BROWSERSTACK_ACCESS_KEY = 'Jxn4E9RzqwXjNVLyxkok'
     }
 
     stages {
