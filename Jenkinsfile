@@ -1,30 +1,34 @@
 pipeline {
-    agent any
-
-    environment {
-        BROWSERSTACK_USERNAME = 'xp_wQRfve'
-        BROWSERSTACK_ACCESS_KEY = 'Jxn4E9RzqwXjNVLyxkok'
-    }
-
+    agent any  // Use any available agent
+    
     stages {
-        stage('Checkout') {
+        
+        
+        stage('Pull Docker Image') {
             steps {
-                git 'https://github.com/XP2600-hub/nhorizonapp-blue.git'
+                // Pull the Docker image
+                sh 'docker pull webdevops/php-apache:8.2'
             }
         }
         
-        stage('Run Tests') {
+        stage('Run Docker Container') {
             steps {
-                script {
-                    sh 'python3 test_index.py' 
-                }
+                sh 'docker run -it --rm -d -p 80:80 -v webapproot:/app/ --name apa webdevops/php-apache:8.2'
             }
         }
-    }
+        
+        stage('Run Selenium Test') {
+            steps {
+                // Run your Selenium test script
+                sh 'python3 /testmodules/test_webapp.py'  // Update with your test script name
+            }
+        }
 
-    post {
+    }
+    post   {
         always {
-            echo "done!"
+            // Clean up (optional)
+            sh 'docker rm apa -f'
         }
     }
 }
