@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.x  # Specify the Python version required
+    commands:
+      - echo "Installing Docker"
+      - yum install -y docker
+      - service docker start
+      - docker pull webdevops/php-apache:8.2
+  pre_build:
+    commands:
+      - echo "Starting Docker Container"
+      - docker run -it --rm -d -p 80:80 -v webapproot:/app/ --name apa webdevops/php-apache:8.2
+  build:
+    commands:
+      - echo "Running Selenium Test"
+      - python3 /testmodules/test_webapp.py  # Update with your test script name
+  post_build:
+    commands:
+      - echo "Cleaning up Docker container"
+      - docker rm apa -f
+
+artifacts:
+  files:
+    - '**/*'  # Adjust if you want to store specific files after the build
